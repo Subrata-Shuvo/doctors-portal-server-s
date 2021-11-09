@@ -19,8 +19,11 @@ async function run(){
           const appointmentsCollection = database.collection('appointments');
 
           app.post('/appointments', async(req, res) =>{
-            
-          })
+              const appointment = req.body;
+              const result = await appointmentsCollection.insertOne(appointment);
+              console.log(result);
+              res.send(result)
+          });
       }
       finally{
        // await client.close();
